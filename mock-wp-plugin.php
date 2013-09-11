@@ -3,7 +3,7 @@
 	/**
 	 * Plugin Name: Mock WP Plugin
 	 * Plugin URI: 127.0.0.1/wordpress/
-	 * Description: Plugin base for designed testing purposes.
+	 * Description: Plugin for testing plugin related functionality.
 	 * Version: 1.0.0
 	 * Author: srcspider
 	 * Author URI: http://github.com/srcspider/

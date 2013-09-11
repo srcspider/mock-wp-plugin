@@ -1,7 +1,7 @@
 <?php defined('ABSPATH') or die;
 
 	/**
-	 * Plugin Name: Sample Plugin
+	 * Plugin Name: Mock WP Plugin
 	 * Plugin URI: 127.0.0.1/wordpress/
 	 * Description: Plugin base for designed testing purposes.
 	 * Version: 1.0.0

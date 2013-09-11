@@ -1,31 +1,20 @@
 <?php
-	$templatepath = pixcore::pluginpath().'views/form-partials/';
-	$coretemplatepath = pixcore::corepath().'views/form-partials/';
 	$config = include pixcore::pluginpath().'plugin-config'.EXT;
 
 	// invoke processor
-//	$processor = pixcore::processor();
-//	$status = $processor->post_check();
-
-	$status = array('show_form' => true); // @debug hardcoded test value
+	$processor = pixcore::processor($config);
+	$status = $processor->status();
 ?>
 
-<?php if ($status['show_form']): ?>
+<div class="wrap">
 
-	<div class="wrap">
+	<div id="icon-options-general" class="icon32"><br></div>
 
-		<div id="icon-options-general" class="icon32"><br></div>
+	<h2>Mock WP Plugin</h2>
 
-		<h2>Sample Plugin</h2>
+	<?php if ($status['state'] == 'nominal'): ?>
 
-		<?php
-			$f = pixcore::form($config);
-//			$f->register_errors($processor->errors());
-			$f->addtemplatepath($coretemplatepath.'fields');
-			$f->addtemplatepath($templatepath.'fields');
-		?>
-
-		<?php echo $f->startform() ?>
+		<?php echo $f = pixcore::form($config, $processor) ?>
 
 			<h3 style="display: none">General Settings</h3>
 
@@ -59,6 +48,12 @@
 
 		<?php echo $f->endform() ?>
 
-	</div>
+	<?php elseif ($status['state'] == 'error'): ?>
 
-<?php endif; ?>
+		<h3>Critical Error</h3>
+
+		<p><?php echo $status['message'] ?></p>
+
+	<?php endif; ?>
+
+</div>

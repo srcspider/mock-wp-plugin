@@ -4,6 +4,10 @@
 
 return array
 	(
+		'plugin-name' => 'mock-wp-plugin',
+
+		'textdomain' => 'pixcore_txtd',
+
 		'template-paths' => array
 			(
 				$basepath.'core/views/form-partials/',
@@ -47,5 +51,8 @@ return array
 					=> include 'settings/other_comment_settings'.EXT,
 
 			),
+
+		// shows exception traces on error
+		'debug' => false,
 
 	); # config

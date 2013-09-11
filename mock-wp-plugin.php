@@ -17,6 +17,32 @@
 
 	require 'core/bootstrap'.EXT;
 
+	$config = include 'plugin-config'.EXT;
+
+	// set textdomain
+	pixcore::settextdomain($config['textdomain']);
+
+
+	// Ensure Test Data
+	// ----------------
+
+	$defaults = include 'plugin-defaults'.EXT;
+
+	$current_data = get_option($config['plugin-name']);
+
+	if ($current_data === false) {
+		add_option($config['plugin-name'], $defaults);
+	}
+	else if (count(array_diff_key($defaults, $current_data)) != 0) {
+		$plugindata = array_merge($defaults, $current_data);
+		update_option($config['plugin-name'], $plugindata);
+	}
+	# else: data is available; do nothing
+
+
+	// Plugin Initialization
+	// ---------------------
+
 	function sampleplugin_callback_show_admin() {
 		require 'views/admin'.EXT;
 	}

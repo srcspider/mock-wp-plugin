@@ -42,6 +42,10 @@
 										'label' => null,
 										'default' => 14,
 										'type' => 'counter',
+										'attrs' => array
+											(
+												'class' => array('example-class', 'another-class')
+											),
 									),
 							),
 					),

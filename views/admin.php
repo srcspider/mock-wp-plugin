@@ -4,7 +4,24 @@
 	// invoke processor
 	$processor = pixcore::processor($config);
 	$status = $processor->status();
+	$errors = $processor->errors();
 ?>
+
+<style>
+	
+	/*
+		THIS IS JUST FOR THE EXAMPLE
+		Please do not place styles like this.
+	*/
+
+	.field-error {
+		color: red  !important;
+	}
+	input[type="number"].field-error {
+		border-color: lightcoral !important;
+	}
+
+</style>
 
 <div class="wrap">
 
@@ -13,6 +30,14 @@
 	<h2>Mock WP Plugin</h2>
 
 	<?php if ($status['state'] == 'nominal'): ?>
+
+		<?php if ( ! empty($errors)): ?>
+			<br/>
+			<p class="update-nag">
+				<strong>Unable to save settings.</strong>
+				Please check the fields for errors and typos.
+			</p>
+		<?php endif; ?>
 
 		<?php echo $f = pixcore::form($config, $processor) ?>
 

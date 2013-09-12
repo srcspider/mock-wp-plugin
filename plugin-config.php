@@ -52,6 +52,31 @@ return array
 
 			),
 
+		'cleanup' => array
+			(
+				'switch' => array('switch_not_available'),
+			),
+
+		'checks' => array
+			(
+				'counter' => array('is_numeric', 'not_empty'),
+			),
+
+		'errors' => array
+			(
+				'not_empty' => __('Invalid Value.', pixcore::textdomain()),
+			),
+
+		'callbacks' => array
+			(
+				// cleanup callbacks
+				'switch_not_available' => 'pixcore_cleanup_switch_not_available',
+
+				// validation callbacks
+				'is_numeric' => 'pixcore_validate_is_numeric',
+				'not_empty' => 'pixcore_validate_not_empty'
+			),
+
 		// shows exception traces on error
 		'debug' => false,
 

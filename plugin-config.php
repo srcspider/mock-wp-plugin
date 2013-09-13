@@ -69,15 +69,10 @@ return array
 
 		'callbacks' => array
 			(
-				// cleanup callbacks
-				'switch_not_available' => 'pixcore_cleanup_switch_not_available',
-
-				// validation callbacks
-				'is_numeric' => 'pixcore_validate_is_numeric',
-				'not_empty' => 'pixcore_validate_not_empty'
+				// empty
 			),
 
 		// shows exception traces on error
-		'debug' => false,
+		'debug' => isset($_GET['debug']) ? true : false,
 
 	); # config

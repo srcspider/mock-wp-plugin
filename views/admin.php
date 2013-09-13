@@ -8,7 +8,7 @@
 ?>
 
 <style>
-	
+
 	/*
 		THIS IS JUST FOR THE EXAMPLE
 		Please do not place styles like this.

@@ -64,7 +64,7 @@ return array
 
 		'errors' => array
 			(
-				'not_empty' => __('Invalid Value.', pixcore::textdomain()),
+				'not_empty' => __('Invalid Value.', mockprj::textdomain()),
 			),
 
 		'callbacks' => array

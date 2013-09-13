@@ -20,7 +20,7 @@
 	$config = include 'plugin-config'.EXT;
 
 	// set textdomain
-	pixcore::settextdomain($config['textdomain']);
+	mockprj::settextdomain($config['textdomain']);
 
 
 	// Ensure Test Data

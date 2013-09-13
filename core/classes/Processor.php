@@ -92,6 +92,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 			(
 				'state' => 'nominal',
 				'errors' => array(),
+				'dataupdate' => false,
 			);
 
 		try {
@@ -106,6 +107,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 				$errors = $this->validate_input($input);
 
 				if (empty($errors)) {
+					$this->status['dataupdate'] = true;
 					update_option($option_key, $input);
 					$this->data = mockprj::instance('MockprjMeta', $input);
 				}
@@ -237,6 +239,30 @@ class MockprjProcessorImpl implements MockprjProcessor {
 		}
 
 		return $this->status['errors'];
+	}
+
+	/**
+	 * Shorthand.
+	 *
+	 * @return boolean
+	 */
+	function performed_update() {
+		if ($this->status === null) {
+			$this->run();
+		}
+
+		return $this->status['dataupdate'];
+	}
+
+	/**
+	 * @return boolean true if state is nominal
+	 */
+	function ok() {
+		if ($this->status === null) {
+			$this->run();
+		}
+
+		return $this->status['state'] == 'nominal';
 	}
 
 } # class

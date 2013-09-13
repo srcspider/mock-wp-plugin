@@ -29,7 +29,7 @@
 
 	<h2>Mock WP Plugin</h2>
 
-	<?php if ($status['state'] == 'nominal'): ?>
+	<?php if ($processor->ok()): ?>
 
 		<?php if ( ! empty($errors)): ?>
 			<br/>
@@ -54,8 +54,6 @@
 
 			</table>
 
-			<h3>Advanced Settings</h3>
-
 			<?php /* # sample block ?>
 
 				<?php # HowTo: show all entries defined in the configuration ?>
@@ -67,9 +65,15 @@
 
 			<?php //*/# end sample block ?>
 
+			<br/>
+
 			<button type="submit" class="button button-primary">
 				Save Changes
 			</button>
+
+			<?php if ($processor->performed_update()): ?>
+				&nbsp; <small>settings updated</small>
+			<?php endif; ?>
 
 		<?php echo $f->endform() ?>
 

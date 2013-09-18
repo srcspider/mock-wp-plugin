@@ -43,7 +43,7 @@
 	// Plugin Initialization
 	// ---------------------
 
-	function sampleplugin_callback_show_admin() {
+	function mock_wp_plugin_callback_show_admin() {
 		require 'views/admin'.EXT;
 	}
 
@@ -51,11 +51,11 @@
 		add_submenu_page
 			(
 				'options-general.php',
-				'Sample Plugin Options',
-				'Sample Plugin',
+				'Mock WP Plugin Options',
+				'Mock WP Plugin',
 				'manage_options',
-				'sample-plugin-slug',
-				'sampleplugin_callback_show_admin'
+				'mock-wp-plugin-slug',
+				'mock_wp_plugin_callback_show_admin'
 			);
 	}
 

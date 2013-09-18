@@ -5,17 +5,17 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class MockprjValidatorImpl implements MockprjValidator {
+class PixcoreValidatorImpl implements PixcoreValidator {
 
-	/** @var MockprjMeta plugin configuration */
+	/** @var PixcoreMeta plugin configuration */
 	protected $meta = null;
 
-	/** @var MockprjMeta field information */
+	/** @var PixcoreMeta field information */
 	protected $fields = null;
 
 	/**
@@ -38,14 +38,14 @@ class MockprjValidatorImpl implements MockprjValidator {
 		$fields !== null or $fields = array();
 
 		if (is_array($config)) {
-			$this->meta = mockprj::instance('MockprjMeta', $config);
+			$this->meta = pixcore::instance('PixcoreMeta', $config);
 		}
 		else { // non-array; assume meta object
 			$this->meta = $config;
 		}
 
 		if (is_array($fields)) {
-			$this->fields = mockprj::instance('MockprjMeta', $fields);
+			$this->fields = pixcore::instance('PixcoreMeta', $fields);
 		}
 		else { // non-array; assume meta object
 			$this->fields = $fields;
@@ -61,7 +61,7 @@ class MockprjValidatorImpl implements MockprjValidator {
 	 */
 	function validate($input) {
 		$errors = array();
-		$defaults = mockprj::defaults();
+		$defaults = pixcore::defaults();
 		$plugin_checks = $this->meta->get('checks', array());
 
 		foreach ($input as $key => $value) {
@@ -72,7 +72,7 @@ class MockprjValidatorImpl implements MockprjValidator {
 			// --------------------------
 
 			$rules = array();
-			// check mockprj defaults
+			// check pixcore defaults
 			if (isset($defaults['checks'][$field['type']])) {
 				$rules = $defaults['checks'][$field['type']];
 			}
@@ -89,7 +89,7 @@ class MockprjValidatorImpl implements MockprjValidator {
 			// ------------------
 
 			foreach ($rules as $rule) {
-				$callback = mockprj::callback($rule, $this->meta);
+				$callback = pixcore::callback($rule, $this->meta);
 				$valid = call_user_func($callback, $input[$key], $field, $this);
 				if ( ! $valid) {
 					isset($errors[$key]) or $errors[$key] = array();
@@ -110,7 +110,7 @@ class MockprjValidatorImpl implements MockprjValidator {
 	 */
 	function error_message($rule) {
 		if (self::$error_message_cache === null) {
-			$defaults = mockprj::defaults();
+			$defaults = pixcore::defaults();
 			$default_errors = $defaults['errors'];
 			$plugin_errors = $this->meta->get('errors', array());
 			self::$error_message_cache = array_merge($default_errors, $plugin_errors);

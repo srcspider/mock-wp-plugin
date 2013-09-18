@@ -5,12 +5,12 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class MockprjHTMLTagImpl implements MockprjHTMLTag {
+class PixcoreHTMLTagImpl implements PixcoreHTMLTag {
 
 	/** @var array html attributes */
 	protected $attrs = null;
@@ -28,7 +28,7 @@ class MockprjHTMLTagImpl implements MockprjHTMLTag {
 	 * Apply configuration.
 	 */
 	protected function configure($config = null) {
-		$this->attrs = mockprj::instance('MockprjMeta', $config);
+		$this->attrs = pixcore::instance('PixcoreMeta', $config);
 	}
 
 	/**
@@ -55,7 +55,7 @@ class MockprjHTMLTagImpl implements MockprjHTMLTag {
 	 */
 	function htmlattributes(array $extra = array()) {
 		$attr_segments = array();
-		$attributes = mockprj::merge($this->attrs->metadata_array(), $extra);
+		$attributes = pixcore::merge($this->attrs->metadata_array(), $extra);
 		foreach ($attributes as $key => $value) {
 			if ($value !== false && $value !== null) {
 				if ( ! empty($value)) {

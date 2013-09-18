@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die;
-	/* @var MockprjFormField $field */
-	/* @var MockprjForm $form */
+	/* @var PixcoreFormField $field */
+	/* @var PixcoreForm $form */
 	/* @var mixed $default */
 	/* @var string $name */
 	/* @var string $idname */

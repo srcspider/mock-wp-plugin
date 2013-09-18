@@ -5,12 +5,12 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class MockprjFormImpl extends MockprjHTMLElementImpl implements MockprjForm {
+class PixcoreFormImpl extends PixcoreHTMLElementImpl implements PixcoreForm {
 
 	/** @var array templates */
 	protected $fields = null;
@@ -36,10 +36,10 @@ class MockprjFormImpl extends MockprjHTMLElementImpl implements MockprjForm {
 		$this->errors = array();
 
 		// setup default autocomplete
-		$this->autocomplete = mockprj::instance('MockprjMeta', array());
+		$this->autocomplete = pixcore::instance('PixcoreMeta', array());
 
 		// setup fields
-		$this->fields = mockprj::instance('MockprjMeta', $config['fields']);
+		$this->fields = pixcore::instance('PixcoreMeta', $config['fields']);
 		unset($config['fields']);
 
 		// invoke htmltag instance configuration
@@ -79,7 +79,7 @@ class MockprjFormImpl extends MockprjHTMLElementImpl implements MockprjForm {
 			$fieldconfig = $this->fields->get($fieldname);
 		}
 
-		return mockprj::instance('MockprjFormField', $fieldconfig)
+		return pixcore::instance('PixcoreFormField', $fieldconfig)
 			->setmeta('form', $this)
 			->setmeta('name', $fieldname);
 	}
@@ -115,16 +115,16 @@ class MockprjFormImpl extends MockprjHTMLElementImpl implements MockprjForm {
 	// Autocomplete
 	// ------------------------------------------------------------------------
 
-	/** @var MockprjMeta autocomplete */
+	/** @var PixcoreMeta autocomplete */
 	protected $autocomplete = null;
 
 	/**
 	 * Autocomplete meta object passed on by the processor.
 	 *
-	 * @param MockprjMeta autocomplete values
+	 * @param PixcoreMeta autocomplete values
 	 * @return static $this
 	 */
-	function autocomplete(MockprjMeta $autocomplete) {
+	function autocomplete(PixcoreMeta $autocomplete) {
 		$this->autocomplete = $autocomplete;
 		return $this;
 	}
@@ -173,16 +173,16 @@ class MockprjFormImpl extends MockprjHTMLElementImpl implements MockprjForm {
 	 * @return string
 	 */
 	function fieldtemplate($templatepath, $conf = array()) {
-		$config = mockprj::instance('MockprjMeta', $conf);
+		$config = pixcore::instance('PixcoreMeta', $conf);
 		return $this->fieldtemplate_render($templatepath, $config);
 	}
 
 	/**
 	 * @param string template path
-	 * @param MockprjMeta configuration
+	 * @param PixcoreMeta configuration
 	 * @return string
 	 */
-	protected function fieldtemplate_render($_template_path, MockprjMeta $conf) {
+	protected function fieldtemplate_render($_template_path, PixcoreMeta $conf) {
 		// variables which we wish to expose to template
 		$form = $this; # $this will also work
 

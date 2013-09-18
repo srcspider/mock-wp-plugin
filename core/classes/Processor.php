@@ -5,17 +5,17 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class MockprjProcessorImpl implements MockprjProcessor {
+class PixcoreProcessorImpl implements PixcoreProcessor {
 
-	/** @var MockprjMeta plugin configuration */
+	/** @var PixcoreMeta plugin configuration */
 	protected $meta = null;
 
-	/** @var MockprjMeta field information */
+	/** @var PixcoreMeta field information */
 	protected $fields = null;
 
 	/**
@@ -31,11 +31,11 @@ class MockprjProcessorImpl implements MockprjProcessor {
 	 * Apply configuration.
 	 */
 	protected function configure($config = null) {
-		$this->meta = mockprj::instance('MockprjMeta', $config);
+		$this->meta = pixcore::instance('PixcoreMeta', $config);
 
 		// extract fields from configuration
 		$fields = $this->extract($this->meta->get('fields', array()));
-		$this->fields = mockprj::instance('MockprjMeta', $fields);
+		$this->fields = pixcore::instance('PixcoreMeta', $fields);
 	}
 
 	/**
@@ -76,7 +76,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 	/** @var array status */
 	protected $status = null;
 
-	/** @var MockprjMeta current data; including submitted data */
+	/** @var PixcoreMeta current data; including submitted data */
 	protected $data = null;
 
 	/**
@@ -109,7 +109,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 				if (empty($errors)) {
 					$this->status['dataupdate'] = true;
 					update_option($option_key, $input);
-					$this->data = mockprj::instance('MockprjMeta', $input);
+					$this->data = pixcore::instance('PixcoreMeta', $input);
 				}
 				else { // got errors
 					$this->status['errors'] = $errors;
@@ -143,7 +143,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 			throw new Exception('Unable to retrieve options.');
 		}
 
-		$this->data = mockprj::instance('MockprjMeta', $dbconfig);
+		$this->data = pixcore::instance('PixcoreMeta', $dbconfig);
 	}
 
 	/**
@@ -151,7 +151,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 	 * @return array cleaned up input
 	 */
 	protected function cleanup_input($input) {
-		$defaults = mockprj::defaults();
+		$defaults = pixcore::defaults();
 		$plugin_cleanup = $this->meta->get('cleanup', array());
 
 		foreach ($this->fields->metadata_array() as $key => $field) {
@@ -165,7 +165,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 			// -----------------------
 
 			$cleanup = array();
-			// check mockprj defaults
+			// check pixcore defaults
 			if (isset($defaults['cleanup'][$field['type']])) {
 				$cleanup = $defaults['cleanup'][$field['type']];
 			}
@@ -182,7 +182,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 			// ---------------
 
 			foreach ($cleanup as $rule) {
-				$callback = mockprj::callback($rule, $this->meta);
+				$callback = pixcore::callback($rule, $this->meta);
 				$input[$key] = call_user_func($callback, $input[$key], $field, $this);
 			}
 		}
@@ -195,7 +195,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 	 * @return array
 	 */
 	protected function validate_input($input) {
-		$validator = mockprj::instance('MockprjValidator', $this->meta, $this->fields);
+		$validator = pixcore::instance('PixcoreValidator', $this->meta, $this->fields);
 		return $validator->validate($input);
 	}
 
@@ -218,7 +218,7 @@ class MockprjProcessorImpl implements MockprjProcessor {
 	}
 
 	/**
-	 * @return MockprjMeta current data (influenced by user submitted data)
+	 * @return PixcoreMeta current data (influenced by user submitted data)
 	 */
 	function data() {
 		if ($this->status === null) {

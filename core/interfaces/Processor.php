@@ -5,12 +5,12 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-interface MockprjProcessor {
+interface PixcoreProcessor {
 
 	/**
 	 * @return static $this

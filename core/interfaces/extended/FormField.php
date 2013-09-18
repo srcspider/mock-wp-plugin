@@ -5,12 +5,12 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-interface MockprjFormField extends MockprjHTMLTag {
+interface PixcoreFormField extends PixcoreHTMLTag {
 
 	/**
 	 * @param string meta key
@@ -39,7 +39,7 @@ interface MockprjFormField extends MockprjHTMLTag {
 	function addmeta($name, $value);
 
 	/**
-	 * @return MockprjMeta form meta
+	 * @return PixcoreMeta form meta
 	 */
 	function meta();
 

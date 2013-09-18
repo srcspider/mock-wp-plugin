@@ -5,12 +5,12 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class mockprj {
+class pixcore {
 
 	/** @var array core defaults */
 	protected static $defaults = null;
@@ -64,10 +64,10 @@ class mockprj {
 
 	/**
 	 * @param array configuration
-	 * @return MockprjForm
+	 * @return PixcoreForm
 	 */
 	static function form($config, $processor) {
-		$form = self::instance('MockprjForm', $config);
+		$form = self::instance('PixcoreForm', $config);
 		$form->autocomplete($processor->data());
 		$form->errors($processor->errors());
 		return $form;
@@ -75,10 +75,10 @@ class mockprj {
 
 	/**
 	 * @param array configuration
-	 * @return MockprjProcessor
+	 * @return PixcoreProcessor
 	 */
 	static function processor($config) {
-		return self::instance('MockprjProcessor', $config);
+		return self::instance('PixcoreProcessor', $config);
 	}
 
 
@@ -175,8 +175,8 @@ class mockprj {
 	 * @return string callback function name
 	 * @throws Exception
 	 */
-	static function callback($key, MockprjMeta $meta) {
-		$defaults = mockprj::defaults();
+	static function callback($key, PixcoreMeta $meta) {
+		$defaults = pixcore::defaults();
 		$default_callbacks = $defaults['callbacks'];
 		$plugin_callbacks = $meta->get('callbacks', array());
 
@@ -191,7 +191,7 @@ class mockprj {
 	}
 
 	/** @var string the translation text domain */
-	protected static $textdomain = 'mockprj_txtd';
+	protected static $textdomain = 'pixcore_txtd';
 
 	/**
 	 * @return string text domain
@@ -210,7 +210,7 @@ class mockprj {
 		}
 		else { // null or otherwise empty value
 			// revert to default
-			self::$textdomain = 'mockprj_txtd';
+			self::$textdomain = 'pixcore_txtd';
 		}
 	}
 

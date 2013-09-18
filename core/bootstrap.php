@@ -11,12 +11,12 @@
 	// load classes
 
 	$interfacepath = $basepath.'interfaces'.DIRECTORY_SEPARATOR;
-	mockprj::require_all($interfacepath);
+	pixcore::require_all($interfacepath);
 
 	$classpath = $basepath.'classes'.DIRECTORY_SEPARATOR;
-	mockprj::require_all($classpath);
+	pixcore::require_all($classpath);
 
 	// load callbacks
 
 	$callbackpath = $basepath.'callbacks'.DIRECTORY_SEPARATOR;
-	mockprj::require_all($callbackpath);
+	pixcore::require_all($callbackpath);

@@ -64,7 +64,7 @@ return array
 
 		'errors' => array
 			(
-				'not_empty' => __('Invalid Value.', mockprj::textdomain()),
+				'not_empty' => 'Invalid Value.',
 			),
 
 		'callbacks' => array

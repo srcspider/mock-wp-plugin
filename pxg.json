@@ -6,7 +6,7 @@
 			"version": "1.0.2",
 			"namespace": {
 				"src": "pixcore",
-				"target": "mockprj"
+				"target": "pixcore"
 			}
 		}
 	]

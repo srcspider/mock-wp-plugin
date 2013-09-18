@@ -1,8 +1,8 @@
 <?php
-	$config = include mockprj::pluginpath().'plugin-config'.EXT;
+	$config = include pixcore::pluginpath().'plugin-config'.EXT;
 
 	// invoke processor
-	$processor = mockprj::processor($config);
+	$processor = pixcore::processor($config);
 	$status = $processor->status();
 	$errors = $processor->errors();
 ?>
@@ -39,7 +39,7 @@
 			</p>
 		<?php endif; ?>
 
-		<?php echo $f = mockprj::form($config, $processor) ?>
+		<?php echo $f = pixcore::form($config, $processor) ?>
 
 			<h3 style="display: none">General Settings</h3>
 

@@ -5,19 +5,19 @@
  */
 
 /**
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class MockprjMetaImpl implements MockprjMeta {
+class PixcoreMetaImpl implements PixcoreMeta {
 
 	/** @var array metadat */
 	protected $metadata = array();
 
 	/**
 	 * @param  array metadata
-	 * @return MockprjMeta
+	 * @return PixcoreMeta
 	 */
 	static function instance($metadata) {
 		$i = new self;

@@ -10,12 +10,12 @@
  * specialized tags such as forms or form fields require misc metadata to be
  * attached on the object itself.
  *
- * @package    mockprj
+ * @package    pixcore
  * @category   core
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class MockprjHTMLElementImpl extends MockprjHTMLTagImpl {
+class PixcoreHTMLElementImpl extends PixcoreHTMLTagImpl {
 
 	/** @var array configuration values */
 	protected $meta = null;
@@ -46,7 +46,7 @@ class MockprjHTMLElementImpl extends MockprjHTMLTagImpl {
 		}
 
 		// setup meta fields
-		$this->meta = mockprj::instance('MockprjMeta', $config);
+		$this->meta = pixcore::instance('PixcoreMeta', $config);
 	}
 
 
@@ -90,7 +90,7 @@ class MockprjHTMLElementImpl extends MockprjHTMLTagImpl {
 	}
 
 	/**
-	 * @return MockprjMeta
+	 * @return PixcoreMeta
 	 */
 	function meta() {
 		return $this->meta;

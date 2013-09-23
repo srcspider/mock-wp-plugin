@@ -5,6 +5,8 @@
 return array
 	(
 		'plugin-name' => 'mock-wp-plugin',
+		
+		'settings-key' => 'mock-wp-plugin_settings',
 
 		'textdomain' => 'pixcore_txtd',
 

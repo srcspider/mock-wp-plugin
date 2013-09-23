@@ -52,6 +52,25 @@ return array
 
 			),
 
+		'processor' => array
+			(
+				// callback signature: (array $input, PixcoreProcessor $processor)
+
+				'preupdate' => array
+					(
+						// callbacks to run before update process
+						// cleanup and validation has been performed on data
+
+						'preupdate_example',
+					),
+				'postupdate' => array
+					(
+						// callbacks to run post update
+
+						'postupdate_example',
+					),
+			),
+
 		'cleanup' => array
 			(
 				'switch' => array('switch_not_available'),
@@ -69,7 +88,9 @@ return array
 
 		'callbacks' => array
 			(
-				// empty
+			// processor update hooks
+				'preupdate_example' => 'pixcore_callback_preupdate_example',
+				'postupdate_example' => 'pixcore_callback_postupdate_example',
 			),
 
 		// shows exception traces on error

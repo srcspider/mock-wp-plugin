@@ -22,6 +22,13 @@
 	// set textdomain
 	pixcore::settextdomain($config['textdomain']);
 
+	// Load Callbacks
+	// --------------
+
+	$basepath = dirname(__FILE__).DIRECTORY_SEPARATOR;
+	$callbackpath = $basepath.'callbacks'.DIRECTORY_SEPARATOR;
+	pixcore::require_all($callbackpath);
+
 
 	// Ensure Test Data
 	// ----------------

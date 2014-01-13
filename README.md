@@ -1,3 +1,5 @@
+pixcore status: [![Build Status](http://jenkins.pixelgrade.com:8080/buildStatus/icon?job=pixcore)](http://jenkins.pixelgrade.com:8080/job/pixcore/)
+
 Sample plugin template. Designed to demo pixcore functionality.
 
 	gem install pxg
